@@ -8,3 +8,19 @@
 4. Creating src folder and build the packages
 
 # Agenda for Tutorial 2.
+1. Creating components and pipeline folder inside src folder
+      a. components/data ingestion file
+      b. components/data preparation file
+      c. components/data transformation file 
+      d. components/model trainer file
+      e. components/model evaluator file
+    
+      a. pipeline/pipeline predictor file
+      a. pipeline/pipeline trainer file
+      
+      
+2. Build logger and exception packages inside src folder
+
+
+# Agenda for Tutorial 3.
+
