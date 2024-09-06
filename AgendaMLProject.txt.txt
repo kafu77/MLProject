@@ -1,0 +1,10 @@
+# Agenda for Tutorial 1.
+1. Setup the github  repository
+2. Creating New environment
+    method: conda create -p nameenv python== any version -y
+3. Creating Setup.py
+4. Creating requirements.txt
+    # -e . added which is used to trigger the setup.py command
+4. Creating src folder and build the packages
+
+# Agenda for Tutorial 2.
