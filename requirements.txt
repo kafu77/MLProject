@@ -6,6 +6,7 @@ dill==0.3.8
 xgboost==2.1.1
 catboost==1.2.7
 ensure
+Flask==3.0.3
 
 
 #-e .
