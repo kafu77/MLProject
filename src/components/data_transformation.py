@@ -18,11 +18,11 @@ from src.utils import save_object
 
 @dataclass
 class DataTransformationConfig:
-    preprocessor_obj_file_path= os.path.join('artifacts',"preprocessor_obj.pkl")
+    preprocessor_obj_file_path= os.path.join('artifacts',"preprocessor.pkl")
 
 class DataTransformation:
     def __init__(self):
-        self.transformation_config = DataTransformationConfig()
+        self.data_transformation_config = DataTransformationConfig()
     
     def get_data_transformation_object(self):
         logging.info("Getting preprocessor object from file")
@@ -35,7 +35,7 @@ class DataTransformation:
             num_trans_pipe=Pipeline(
                 steps=[
                ("imputer", SimpleImputer(strategy="median", fill_value='missing',missing_values=np.nan)),
-               ("scaler", StandardScaler())
+               ("scaler", StandardScaler(with_mean=False))
                 ]
             )
             
@@ -44,7 +44,7 @@ class DataTransformation:
                   steps=[
                       ("imputer", SimpleImputer(strategy="most_frequent", fill_value='missing',missing_values=np.nan)),
                       ("OneHotEncoder", OneHotEncoder(drop='if_binary')),
-                      ("scaler", StandardScaler())
+                      ("scaler", StandardScaler(with_mean=False))
                       
                   ]
             )
@@ -71,7 +71,7 @@ class DataTransformation:
         try:
             train_df =pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
-            logging.info("Read train and test dataframes")
+            logging.info("Read train and test data frame")
             logging.info("Obtaining preprocessor object")
             
             preprocessor_obj = self.get_data_transformation_object()
@@ -85,7 +85,7 @@ class DataTransformation:
             input_feature_test_df=test_df.drop(columns=[target_column_name],axis=1)
             target_feature_test_df=test_df[target_column_name]
             
-            logging.info(f"Applying preprocessing object on training dataframe and testing dataframe.")
+            logging.info(f"Applying preprocessing object on training data frame and testing data frame.")
             
             input_feature_train_arr=preprocessor_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr=preprocessor_obj.transform(input_feature_test_df)
