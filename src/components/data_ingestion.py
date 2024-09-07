@@ -10,8 +10,8 @@ from dataclasses import dataclass
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
 
-#from src.components.model_trainer import ModelTrainerConfig
-#from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 # The @dataclass decorator in Python is used to automatically generate 
 # special methods for a class, such as __init__(), __repr__(), __eq__(), and others, based on the class attributes.
@@ -58,7 +58,7 @@ if __name__=="__main__":
     train_data,test_data=obj.initiate_data_ingestion()
     
     data_trans_obj = DataTransformation()
-    data_trans_obj.initiate_data_transformation(train_data,test_data)
+    train_arr, test_arr,_= data_trans_obj.initiate_data_transformation(train_data,test_data)
     
-    #modelTrainer = ModelTrainer()
-    #print(modelTrainer.initiate_model_trainer(train_arr, test_arr))
+    modelTrainer = ModelTrainer()
+    print(modelTrainer.initiate_model_trainer(train_arr, test_arr))
